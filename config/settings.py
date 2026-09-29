@@ -1,65 +1,22 @@
 import os
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 
-# --------------------------------------------------
-# Load .env file
-# --------------------------------------------------
+# Load environment variables
+load_dotenv()
 
-dotenv_path = find_dotenv()
-
-if dotenv_path:
-    print(f"✅ .env file found at: {dotenv_path}")
-    load_dotenv(dotenv_path)
-else:
-    print("❌ .env file not found!")
-
-# --------------------------------------------------
-# API Keys
-# --------------------------------------------------
-
+# Groq API Key
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-PEXELS_API_KEY = os.getenv("PEXELS_API_KEY")
 
-# --------------------------------------------------
-# Debug (Remove after testing)
-# --------------------------------------------------
+# Current model
+MODEL_NAME = os.getenv(
+    "GROQ_MODEL",
+    "openai/gpt-oss-120b"
+)
 
-print("Current Working Directory:", os.getcwd())
+if not GROQ_API_KEY:
+    raise ValueError(
+        "GROQ_API_KEY is missing. Please configure it in your .env file."
+    )
 
-if GROQ_API_KEY:
-    print("✅ GROQ API Loaded")
-else:
-    print("❌ GROQ API NOT Loaded")
-
-if PEXELS_API_KEY:
-    print("✅ PEXELS API Loaded")
-else:
-    print("❌ PEXELS API NOT Loaded")
-
-# --------------------------------------------------
-# AI Model
-# --------------------------------------------------
-
-MODEL_NAME = "llama-3.3-70b-versatile"
-
-# --------------------------------------------------
-# App Settings
-# --------------------------------------------------
-
-APP_NAME = "AI PPT Generator"
-
-DEFAULT_SLIDES = 10
-
-DEFAULT_THEME = "Blue"
-
-DEFAULT_STYLE = "Professional"
-
-DEFAULT_LANGUAGE = "English"
-
-DEFAULT_FONT = "Calibri"
-
-DEFAULT_FONT_SIZE = 24
-
-DEFAULT_CREATIVITY = 0.7
-
-OUTPUT_FOLDER = "output"
+print("CONFIG LOADED")
+print("ACTIVE MODEL:", MODEL_NAME)

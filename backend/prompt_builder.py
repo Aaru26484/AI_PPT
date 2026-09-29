@@ -23,41 +23,41 @@ Presentation Details:
 - Font: {font}
 - Font Size: {font_size}
 
-Instructions:
+IMPORTANT CONTENT RULES:
 
 1. Generate EXACTLY {slides} slides.
 
-2. Organize the presentation logically using sections such as:
-   - Introduction
-   - Background
-   - Definition
-   - Key Concepts
-   - Working Process
-   - Features
-   - Advantages
-   - Challenges
-   - Applications
-   - Future Scope
-   - Conclusion
+2. Organize the presentation logically.
 
 3. Every slide MUST contain:
    - One professional slide title.
-   - EXACTLY 6 bullet points.
-   - Every bullet must start directly with the content (do not use numbering).
-   - Every bullet must be a complete sentence.
-   - Every bullet must contain between 18 and 25 words.
-   - Every bullet should explain one important concept.
-   - Every bullet should be informative and presentation-ready.
-   - Avoid one-word bullets.
-   - Avoid repeating information across slides.
+   - EXACTLY 5 bullet points.
+   - Each bullet must be SHORT and presentation-friendly.
+   - Each bullet should contain approximately 8–14 words.
+   - Never write long paragraphs.
+   - Never combine multiple ideas into one bullet.
+   - Each bullet should communicate one clear idea.
+   - Do not repeat the slide title inside the bullets.
+   - Avoid unnecessary explanations.
+   - Avoid filler words.
+   - Keep all content concise enough to fit on one PowerPoint slide.
 
-4. The content should:
+4. Content should:
    - Be suitable for college, technical, and business presentations.
-   - Use professional English.
-   - Be concise but meaningful.
-   - Cover different aspects of the topic on every slide.
+   - Use professional and simple language.
+   - Be informative but concise.
+   - Cover different aspects of the topic on different slides.
+   - Use keywords where appropriate.
+   - Prefer short phrases and clear sentences.
 
-5. Do NOT include:
+5. IMPORTANT:
+   - NEVER generate large paragraphs.
+   - NEVER generate more than 14 words in a single bullet.
+   - NEVER generate more than 5 bullets per slide.
+   - Keep slide content visually clean.
+   - Content must fit comfortably inside a standard 16:9 PowerPoint slide.
+
+6. Do NOT include:
    - Markdown
    - Tables
    - Code
@@ -66,12 +66,13 @@ Instructions:
    - Image filenames
    - Extra explanations outside JSON
 
-6. Speaker Notes:
+7. Speaker Notes:
 """
 
     if speaker_notes:
         prompt += """
-Generate 2–3 informative speaker notes for each slide.
+Generate 2–3 short and informative sentences as speaker notes for each slide.
+Speaker notes can contain additional explanation that does not need to appear on the slide.
 """
     else:
         prompt += """
@@ -80,7 +81,9 @@ Leave speaker_notes as an empty string.
 
     prompt += """
 
-Return ONLY valid JSON in the following format:
+Return ONLY valid JSON.
+
+Use exactly this format:
 
 {
     "title": "Presentation Title",
@@ -88,12 +91,11 @@ Return ONLY valid JSON in the following format:
         {
             "title": "Slide Title",
             "content": [
-                "Bullet point one with detailed information.",
-                "Bullet point two with detailed information.",
-                "Bullet point three with detailed information.",
-                "Bullet point four with detailed information.",
-                "Bullet point five with detailed information.",
-                "Bullet point six with detailed information."
+                "Short bullet point about the topic",
+                "Another concise and informative point",
+                "Important concept explained briefly",
+                "Useful information about the topic",
+                "Final key point for this slide"
             ],
             "speaker_notes": ""
         }
